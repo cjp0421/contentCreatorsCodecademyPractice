@@ -5,8 +5,23 @@
 
 function getContentType(filename) {
 
-  const extension = filename.match(/.*\.([^\.]*)$/)[1];
-  const fileName = filename.match(/.*\.([^\.]*)$/)[0];
-  return `${fileName}/${extension}`;
+  let extension = filename.match(/.*\.([^\.]*)$/)[1];
+  let fileType;
+
+  if (filename.includes('css')) {
+    fileType = 'text';
+  } else if (filename.includes('html')) {
+    fileType = 'text';
+  } else if (filename.includes('jpeg')) {
+    fileType = 'image';
+  } else if (filename.includes('jpg')) {
+    fileType = 'image';
+    extension = 'jpeg';
+  } else {
+    fileType = 'text';
+    extension = 'plain';
+  }
+
+  return `${fileType}/${extension}`;
 
 }
